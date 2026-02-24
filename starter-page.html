@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Starter Page - NiceRestaurant Bootstrap Template</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- ═══════════════════════════════════════════════════════
+       EXECUTIVE SNAPSHOT – Custom Styles
+  ════════════════════════════════════════════════════════ -->
+  <style>
+    /* ── CSS Variables ── */
+    #about-stats {
+      --sand-deep:   #1a1208;
+      --sand-mid:    #2e1f0a;
+      --sand-warm:   #3d2b10;
+      --gold-bright: #e8a825;
+      --gold-light:  #f5c842;
+      --gold-pale:   #fde68a;
+      --cream:       #fdf5e6;
+      --rust:        #8b3a10;
+      --sky-blue:    #4a9eba;
+      --text-light:  #f0e6d3;
+      --text-muted:  #b8a080;
+    }
+
+    /* ── Section wrapper ── */
+    #about-stats {
+      background: var(--sand-deep);
+      position: relative;
+      padding: 80px 0;
+      overflow: hidden;
+    }
+
+    /* desert atmosphere */
+    #about-stats::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(139,58,16,0.28) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 20%, rgba(74,158,186,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 100% 100% at 50% 50%, rgba(232,168,37,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* grain texture */
+    #about-stats::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    #about-stats .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Ornamental header ── */
+    .executive-snapshot__header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .executive-snapshot__ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .orn-line {
+      flex: 1;
+      max-width: 110px;
+      height: 1px;
+      background: linear-gradient(to var(--d, left), transparent, var(--gold-bright));
+    }
+    .orn-line.r { --d: right; }
+
+    .orn-diamond {
+      width: 9px; height: 9px;
+      background: var(--gold-bright);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+    .orn-diamond.sm { width: 5px; height: 5px; }
+
+    /* ── Ribbon badge ── */
+    .executive-snapshot__ribbon {
+      display: inline-block;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gold-bright);
+      background: rgba(232,168,37,0.08);
+      border: 1px solid rgba(232,168,37,0.28);
+      padding: 7px 22px;
+      border-radius: 2px;
+      margin-bottom: 18px;
+    }
+
+    .executive-snapshot__main-title {
+      font-family: 'Tajawal', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 800;
+      color: var(--cream);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .executive-snapshot__sub-title {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* ── KPI grid ── */
+    .executive-snapshot__kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+      gap: 2px;
+      margin-bottom: 2px;
+    }
+
+    .executive-snapshot__kpi {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(232,168,37,0.12);
+      padding: 28px 14px 22px;
+      text-align: center;
+      position: relative;
+      transition: background 0.3s, transform 0.3s;
+      cursor: default;
+    }
+
+    .executive-snapshot__kpi::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-bright), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .executive-snapshot__kpi:hover {
+      background: rgba(232,168,37,0.07);
+      transform: translateY(-4px);
+    }
+    .executive-snapshot__kpi:hover::before { opacity: 1; }
+
+    .executive-snapshot__value {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 10px;
+      text-shadow: 0 0 28px rgba(232,168,37,0.45);
+    }
+
+    .executive-snapshot__label {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      font-weight: 400;
+    }
+
+    /* ── Revenue block ── */
+    .executive-snapshot__revenue {
+      background: linear-gradient(135deg, rgba(232,168,37,0.12) 0%, rgba(139,58,16,0.18) 100%);
+      border: 1px solid rgba(232,168,37,0.3);
+      padding: 38px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .executive-snapshot__revenue::before {
+      content: '﷼';
+      position: absolute;
+      left: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 160px;
+      color: rgba(232,168,37,0.05);
+      font-family: serif;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .executive-snapshot__revenue-title {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      font-weight: 300;
+    }
+
+    .executive-snapshot__revenue-value {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--gold-bright);
+      line-height: 1;
+      text-shadow: 0 0 55px rgba(232,168,37,0.5);
+    }
+
+    .executive-snapshot__revenue-currency {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.95rem;
+      color: var(--gold-pale);
+      margin-top: 6px;
+    }
+
+    .executive-snapshot__revenue-icon {
+      font-size: 3.5rem;
+      color: rgba(232,168,37,0.35);
+      line-height: 1;
+    }
+
+    /* ── Distribution bars ── */
+    .executive-snapshot__distribution {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(232,168,37,0.1);
+      padding: 34px 40px;
+      margin-bottom: 40px;
+    }
+
+    .executive-snapshot__distribution-title {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--gold-bright);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 26px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .executive-snapshot__distribution-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(232,168,37,0.2);
+    }
+
+    .executive-snapshot__distribution-items {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .executive-snapshot__distribution-item {
+      display: grid;
+      grid-template-columns: 130px 1fr 60px;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .executive-snapshot__dist-label {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      text-align: right;
+    }
+
+    /* bar track */
+    .executive-snapshot__bar-track {
+      height: 6px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .executive-snapshot__bar-fill {
+      height: 100%;
+      border-radius: 3px;
+      animation: esGrowBar 1.4s 0.6s ease both;
+    }
+    .executive-snapshot__bar-fill.gold { background: linear-gradient(to left, var(--gold-light), var(--gold-bright)); }
+    .executive-snapshot__bar-fill.rust { background: linear-gradient(to left, #c0652a, var(--rust)); }
+    .executive-snapshot__bar-fill.blue { background: linear-gradient(to left, #7ec4d8, var(--sky-blue)); }
+
+    .executive-snapshot__pct {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      text-align: left;
+      direction: ltr;
+    }
+
+    /* ── Section divider ribbon ── */
+    .executive-snapshot__section-ribbon {
+      display: inline-block;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      color: var(--gold-bright);
+      background: rgba(232,168,37,0.1);
+      border: 1px solid rgba(232,168,37,0.22);
+      padding: 6px 18px;
+      margin-bottom: 20px;
+    }
+
+    /* ── Project card ── */
+    .executive-snapshot__project {
+      border: 1px solid rgba(232,168,37,0.2);
+      border-right: 4px solid var(--gold-bright);
+      padding: 30px 34px;
+      background: rgba(255,255,255,0.025);
+    }
+
+    .executive-snapshot__project-title {
+      font-family: 'Tajawal', sans-serif;
+      font-size: clamp(1.15rem, 3vw, 1.65rem);
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: 18px;
+    }
+
+    .executive-snapshot__partners {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+    }
+
+    .executive-snapshot__partner-tag {
+      font-family: 'Tajawal', sans-serif;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      padding: 6px 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: color 0.25s, border-color 0.25s, background 0.25s;
+      cursor: default;
+    }
+
+    .executive-snapshot__partner-tag:hover {
+      color: var(--gold-light);
+      border-color: rgba(232,168,37,0.3);
+      background: rgba(232,168,37,0.06);
+    }
+
+    /* ── Animations ── */
+    @keyframes esGrowBar {
+      from { width: 0; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .executive-snapshot__revenue { padding: 26px 22px; }
+      .executive-snapshot__distribution { padding: 26px 22px; }
+      .executive-snapshot__distribution-item { grid-template-columns: 90px 1fr 46px; gap: 12px; }
+      .executive-snapshot__project { padding: 22px 18px; }
+    }
+  </style>
+
+</head>
+
+<body class="starter-page-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <i class="bi bi-fork-knife"></i>
+        <h1 class="sitename">NiceRestaurant</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#book-a-table">Book a Table</a></li>
+          <li><a href="#chefs">Chefs</a></li>
+          <li><a href="#events">Events</a></li>
+          <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="#">Dropdown 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+                <ul>
+                  <li><a href="#">Deep Dropdown 1</a></li>
+                  <li><a href="#">Deep Dropdown 2</a></li>
+                  <li><a href="#">Deep Dropdown 3</a></li>
+                  <li><a href="#">Deep Dropdown 4</a></li>
+                  <li><a href="#">Deep Dropdown 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Dropdown 2</a></li>
+              <li><a href="#">Dropdown 3</a></li>
+              <li><a href="#">Dropdown 4</a></li>
+            </ul>
+          </li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+
+      <a class="btn-getstarted d-none d-sm-block" href="#book-a-table">Book a Table</a>
+
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1>Starter Page</h1>
+              <p class="mb-0">Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li class="current">Starter Page</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- ═══════════════════════════════════════════════════════
+         Executive Snapshot Section
+    ════════════════════════════════════════════════════════ -->
+    <section id="about-stats" class="section about-stats" dir="rtl" lang="ar">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <!-- ── Ornamental Header ── -->
+        <div class="executive-snapshot__header" data-aos="fade-up" data-aos-delay="130">
+          <div class="executive-snapshot__ornament">
+            <div class="orn-line r"></div>
+            <div class="orn-diamond sm"></div>
+            <div class="orn-diamond"></div>
+            <div class="orn-diamond sm"></div>
+            <div class="orn-line"></div>
+          </div>
+          <div class="executive-snapshot__ribbon">Executive Snapshot · KPIs</div>
+          <h2 class="executive-snapshot__main-title">الملخص التنفيذي بالأرقام</h2>
+          <p class="executive-snapshot__sub-title">مؤشرات الأداء الرئيسية لأكاديمية الهجن الوطنية</p>
+        </div>
+
+        <!-- ── KPI Cards ── -->
+        <div class="executive-snapshot__kpis" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="executive-snapshot__kpi">
+            <div class="executive-snapshot__value">5</div>
+            <div class="executive-snapshot__label">منتجات تمويلية</div>
+          </div>
+
+          <div class="executive-snapshot__kpi">
+            <div class="executive-snapshot__value">4</div>
+            <div class="executive-snapshot__label">منتجات تأمينية</div>
+          </div>
+
+          <div class="executive-snapshot__kpi">
+            <div class="executive-snapshot__value">+2,500</div>
+            <div class="executive-snapshot__label">شهادة اعتماد سنويًا</div>
+          </div>
+
+          <div class="executive-snapshot__kpi">
+            <div class="executive-snapshot__value">770</div>
+            <div class="executive-snapshot__label">ممارس معتمدًا</div>
+          </div>
+
+          <div class="executive-snapshot__kpi">
+            <div class="executive-snapshot__value">8,000</div>
+            <div class="executive-snapshot__label">مستفيد من فطيم سنويًا</div>
+          </div>
+
+          <div class="executive-snapshot__kpi">
+            <div class="executive-snapshot__value">70</div>
+            <div class="executive-snapshot__label">أكاديمية فرعية</div>
+          </div>
+
+          <div class="executive-snapshot__kpi">
+            <div class="executive-snapshot__value">10–12</div>
+            <div class="executive-snapshot__label">نادي معتمد</div>
+          </div>
+
+        </div><!-- /.executive-snapshot__kpis -->
+
+        <!-- ── Revenue Spotlight ── -->
+        <div class="executive-snapshot__revenue" data-aos="fade-up" data-aos-delay="250">
+          <div>
+            <div class="executive-snapshot__revenue-title">الإيرادات السنوية المتوقعة</div>
+            <div class="executive-snapshot__revenue-value">9,000,000</div>
+            <div class="executive-snapshot__revenue-currency">ريال سعودي</div>
+          </div>
+          <div class="executive-snapshot__revenue-icon" aria-hidden="true">
+            <i class="bi bi-cash-coin"></i>
+          </div>
+        </div><!-- /.executive-snapshot__revenue -->
+
+        <!-- ── Distribution Bars ── -->
+        <div class="executive-snapshot__distribution" data-aos="fade-up" data-aos-delay="300">
+          <div class="executive-snapshot__distribution-title">التوزيع</div>
+
+          <div class="executive-snapshot__distribution-items">
+
+            <div class="executive-snapshot__distribution-item">
+              <span class="executive-snapshot__dist-label">مالك الامتياز</span>
+              <div class="executive-snapshot__bar-track">
+                <div class="executive-snapshot__bar-fill gold" style="width:30%"></div>
+              </div>
+              <span class="executive-snapshot__pct">30%</span>
+            </div>
+
+            <div class="executive-snapshot__distribution-item">
+              <span class="executive-snapshot__dist-label">نوادي الهجن</span>
+              <div class="executive-snapshot__bar-track">
+                <div class="executive-snapshot__bar-fill rust" style="width:35%"></div>
+              </div>
+              <span class="executive-snapshot__pct">35%</span>
+            </div>
+
+            <div class="executive-snapshot__distribution-item">
+              <span class="executive-snapshot__dist-label">صندوق الاتحاد السعودي للهجن</span>
+              <div class="executive-snapshot__bar-track">
+                <div class="executive-snapshot__bar-fill blue" style="width:35%"></div>
+              </div>
+              <span class="executive-snapshot__pct">35%</span>
+            </div>
+
+          </div>
+        </div><!-- /.executive-snapshot__distribution -->
+
+        <!-- ── Institutional Integration Scenario ── -->
+        <div data-aos="fade-up" data-aos-delay="350">
+          <div class="executive-snapshot__section-ribbon">سيناريو الشمولية والتكامل المؤسسي</div>
+        </div>
+
+        <div class="executive-snapshot__project" data-aos="fade-up" data-aos-delay="400">
+          <h3 class="executive-snapshot__project-title">مشروع امتياز أكاديمية الهجن الوطنية</h3>
+          <div class="executive-snapshot__partners">
+            <span class="executive-snapshot__partner-tag">شركة تأمينية</span>
+            <span class="executive-snapshot__partner-tag">شركة تمويلية</span>
+            <span class="executive-snapshot__partner-tag">شركة استشارات تطويرية</span>
+            <span class="executive-snapshot__partner-tag">شركة نقل لوجستية</span>
+          </div>
+        </div><!-- /.executive-snapshot__project -->
+
+      </div><!-- /.container -->
+    </section><!-- /#about-stats -->
+
+  </main>
+
+  <footer id="footer" class="footer">
+
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-about">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span class="sitename">NiceRestaurant</span>
+          </a>
+          <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
+          <div class="social-links d-flex mt-4">
+            <a href=""><i class="bi bi-twitter-x"></i></a>
+            <a href=""><i class="bi bi-facebook"></i></a>
+            <a href=""><i class="bi bi-instagram"></i></a>
+            <a href=""><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Useful Links</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Terms of service</a></li>
+            <li><a href="#">Privacy policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-6 footer-links">
+          <h4>Our Services</h4>
+          <ul>
+            <li><a href="#">Web Design</a></li>
+            <li><a href="#">Web Development</a></li>
+            <li><a href="#">Product Management</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Graphic Design</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+          <h4>Contact Us</h4>
+          <p>A108 Adam Street</p>
+          <p>New York, NY 535022</p>
+          <p>United States</p>
+          <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
+          <p><strong>Email:</strong> <span>info@example.com</span></p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">NiceRestaurant</strong> <span>All Rights Reserved</span></p>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you've purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> | <a href="https://bootstrapmade.com/tools/">DevTools</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,9 +1,9 @@
 
 /* Fonts */
 :root {
-  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Libre Baskerville",  sans-serif;
-  --nav-font: "Poppins",  sans-serif;
+  --default-font: "Noto Kufi Arabic", "Tajawal", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Noto Kufi Arabic", "Tajawal", sans-serif;
+  --nav-font: "Noto Kufi Arabic", "Tajawal", sans-serif;
 }
 
 /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
@@ -106,6 +106,11 @@ main.main #gap-mapping.section::before {
 }
 
 main.main #contact.section::before {
+  content: none;
+  display: none;
+}
+
+main.main #institutional-integration.section::before {
   content: none;
   display: none;
 }
@@ -288,6 +293,39 @@ h6 {
   color: color-mix(in srgb, var(--default-color), transparent 28%);
 }
 
+@media (min-width: 769px) {
+  .camelexis-card--values {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 22px;
+    background: color-mix(in srgb, var(--surface-color), transparent 10%);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+  }
+
+  .camelexis-card--values:hover {
+    transform: translateY(-6px);
+    border-color: color-mix(in srgb, var(--accent-color), transparent 60%);
+    box-shadow: 0 22px 56px rgba(0, 0, 0, 0.26);
+  }
+
+  .camelexis-card--values .camelexis-card__icon {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 14px;
+  }
+
+  .camelexis-card--values .camelexis-card__body {
+    width: 100%;
+  }
+
+  .camelexis-card--values .camelexis-values__list {
+    justify-content: center;
+    margin-top: 14px;
+  }
+}
+
 .camelexis-values {
   border-radius: 18px;
   padding: 22px;
@@ -395,6 +433,23 @@ h6 {
   .camelexis-pill {
     font-size: 0.98rem;
   }
+
+  .camelexis-card--values .camelexis-values__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    justify-items: center;
+  }
+
+  .camelexis-card--values .camelexis-pill {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .camelexis-card--values .camelexis-values__list .camelexis-pill:last-child {
+    grid-column: 1 / -1;
+    width: fit-content;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -418,17 +473,22 @@ h6 {
 }
 
 .header .logo i {
-  font-size: 24px;
+  font-size: 16px;
   margin-right: 5px;
   color: var(--accent-color);
 }
 
 .header .logo h1 {
-  font-size: 24px;
+  font-size: 16px;
   margin: 0;
   font-weight: 500;
   letter-spacing: 0.5px;
   color: var(--heading-color);
+  line-height: 1.2;
+}
+
+.header .logo .sitename {
+  font-weight: 700;
 }
 
 .header .btn-getstarted,
@@ -5412,4 +5472,16 @@ body.starter-page-page .about-highlights .highlight-item h4, .about-objectives .
 .key-gaps::before {
   content: none !important;
   display: none !important;
+}
+
+
+
+.header .logo h1 {
+    font-size: 17px;
+    margin: 0;
+    position: relative;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: var(--heading-color);
+    left: 14%;
 }

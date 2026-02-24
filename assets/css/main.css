@@ -3826,8 +3826,20 @@ section,
   margin: 0 0 0.65rem;
   font-size: 1.35rem;
   font-weight: 900;
-  color: var(--accent-color);
+  color: var(--heading-color);
   line-height: 1.7;
+}
+
+.key-gaps__title-ar {
+  display: block;
+}
+
+.key-gaps__title-en {
+  display: block;
+  direction: ltr;
+  unicode-bidi: isolate;
+  font-weight: 800;
+  opacity: 0.95;
 }
 
 .key-gaps__item-title i {

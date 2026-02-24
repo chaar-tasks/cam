@@ -283,7 +283,7 @@ h6 {
 
 .camelexis-card__text {
   margin: 0;
-  font-size: 1.18rem;
+  font-size: 1.7rem;
   line-height: 1.95;
   color: color-mix(in srgb, var(--default-color), transparent 28%);
 }
@@ -339,7 +339,7 @@ h6 {
 
 .camelexis-values__subtitle {
   margin: 6px 0 0;
-  font-size: 1.12rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: color-mix(in srgb, var(--default-color), transparent 28%);
 }
@@ -385,7 +385,7 @@ h6 {
   }
 
   .camelexis-card__text {
-    font-size: 1.05rem;
+    font-size: 1.12rem;
   }
 
   .camelexis-values__title {

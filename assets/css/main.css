@@ -5447,15 +5447,12 @@ transform: none;
 
 
 
-.financial-sustainability__tile {
-  background: color-mix(in srgb, var(--accent-color), transparent 25%);
-  color: var(--contrast-color);
-  border-radius: 10px;
-  padding: 18px 20px;
-  text-align: center;
-  font-weight: 700;
-  height: 100%;
-  font-size: xx-large;
+@media (max-width: 576px) {
+  .financial-sustainability__tile {
+    padding: 14px 14px;
+    font-size: 1.1rem;
+    line-height: 1.35;
+  }
 }
 
 .section .intro-text h2 {

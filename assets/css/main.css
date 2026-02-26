@@ -4375,6 +4375,17 @@ section,
   margin-top: 40px;
 }
 
+.contact .contact-split .row > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact .contact-split .contact-form-wrapper,
+.contact .contact-split .map-section {
+  width: 100%;
+  flex: 1;
+}
+
 .contact .contact-split .map-section {
   margin-top: 0;
   height: 100%;
